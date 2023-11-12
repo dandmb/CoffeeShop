@@ -6,9 +6,13 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
+
 import java.io.Serializable;
 
-@NamedQuery(name = "User.findByEmailId",query = "select u from User u where u.email=:email")
+@NamedQuery(name = "User.findByEmailId", query = "select u from User u where u.email=:email")
+@NamedQuery(name = "User.updateStatus", query = "update User u set u.status=:status where u.id=:id")
+@NamedQuery(name = "User.getAllUser", query = "select new com.dmb.coffee.shop.system.wrapper.UserWrapper(u.id,u.name,u.email,u.contactNumber,u.status) from User u where u.role='user'")
+@NamedQuery(name = "User.getAllAdmin", query = "select u.email from User u where u.role='admin'")
 
 @Data
 @Entity
@@ -16,7 +20,7 @@ import java.io.Serializable;
 @DynamicInsert
 @NoArgsConstructor
 @Table(name = "_user")
-public class User implements Serializable{
+public class User implements Serializable {
 
 
     @Id

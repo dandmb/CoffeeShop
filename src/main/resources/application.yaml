@@ -1,4 +1,15 @@
 spring:
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: dbmwork9@gmail.com
+    password: yvgxvoxwvvkfsbjk
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
   datasource:
     url: jdbc:postgresql://localhost:5432/coffee_shop_db
     driver-class-name: org.postgresql.Driver
